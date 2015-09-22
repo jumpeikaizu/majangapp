@@ -5,16 +5,19 @@
 	<title>top-info</title>
   </head>
   <body>
+	{{turn}}</br>
 	<div style="display:inline-flex">
 	{% for hai in tehai %}
  	<form action="/post" method="post">	
 	<input type="image" src="{{url_for('static', filename=hai+'.gif')}}" alt="{{hai}}" />
 	<input type="hidden" value="{{hai}}" name="hai" />
-	<!--<button type="submit" name="m1" >
-	  <img src="{{url_for('static', filename=hai+'.gif')}}" >
-	</button>--> 
 	</form>
 	{% endfor %}
 	</div>
+	</br>
+	{% if result != "next\n" %}
+	{{result}}</br>
+	<button onClick="location.href='/'">次のゲームへ</button>
+	{% endif %}
   </body>
 </html>

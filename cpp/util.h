@@ -1,4 +1,3 @@
-
 #pragma once
 
 #include<iostream>
@@ -23,3 +22,6 @@ unsigned int r_gen(int n);
 void init_genrand(unsigned long s);
 unsigned long genrand_int32();
 double genrand_real1(void);
+
+string numchange(int kind);
+int haichange(string h);

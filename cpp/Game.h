@@ -13,8 +13,9 @@ class Game{//ゲーム（実験）を管理
 	int now_turn;
 	int nokori_turn;//残りターン
 public:
-	Game(int init_nokori_turn);//ランダム
-	Game(int init_nokori_turn,int init_dora,vector<int> init_tehai);//配牌指定
+  Game(int init_nokori_turn);//ランダム
+  Game(int init_nokori_turn,int game);
+  Game(int init_nokori_turn,int init_dora,vector<int> init_tehai);//配牌指定
 
 	int tsumo(){//ツモる牌を渡して，ターンを進める
 		int res=Yama[now_turn];

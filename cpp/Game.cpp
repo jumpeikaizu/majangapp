@@ -1,9 +1,12 @@
 #include"Game.h"
 #include<algorithm>
+#include<fstream>
+#include<sstream>
+#include<string>
 #include"rand.h"
 
 Game::Game(int init_nokori_turn){
-	nokori_turn=init_nokori_turn;
+    nokori_turn=init_nokori_turn;
 	now_turn=0;
 	Yama.clear();
 	for(int k=0;k<KIND;k++){
@@ -14,10 +17,26 @@ Game::Game(int init_nokori_turn){
 	}
 
 	//srand(0);
-	random_shuffle(Yama.begin(),Yama.end(),r_gen);
+	random_shuffle(Yama.begin(),Yama.end());
 
 	dora=Yama[Yama.size()-1];
 
+}
+
+Game::Game(int init_nokori_turn,int game){
+  nokori_turn=init_nokori_turn;
+  now_turn=0;
+  Yama.clear();
+  ifstream ifs("yama.txt");
+  string yama;
+  for(int i=0;i<game;i++){
+	getline(ifs,yama);
+  }
+  stringstream ss(yama);
+  string hai;
+  while(getline(ss,hai,' ')){
+	Yama.push_back(stoi(hai));
+  }
 }
 
 

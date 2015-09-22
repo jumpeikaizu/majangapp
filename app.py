@@ -6,18 +6,22 @@ p = Popen("./a.out", stdout=PIPE, stdin=PIPE)
 
 @app.route('/')
 def show():
-    #refresh = request.args.get("refresh") or "3"
+    turn = p.stdout.readline()
     tehai = p.stdout.readline().split(' ')
+    result = p.stdout.readline()
     del tehai[14]
-    return render_template("show.html", tehai=tehai)
+    return render_template("show.html", turn=turn, tehai=tehai,result=result)
 
 @app.route('/post',methods=['POST'])
 def post():
-    #refresh = request.args.get("refresh") or "3"
     p.stdin.write(request.form['hai']+'\n')
+    turn = p.stdout.readline()
     tehai = p.stdout.readline().split(' ')
+    result = p.stdout.readline()
     del tehai[14]
-    return render_template("show.html",tehai=tehai)
+    #if result == "end\n":
+    #    return render_template("show.html" ,turn=turn, tehai=tehai)
+    return render_template("show.html", turn=turn, tehai=tehai, result=result)
     #return request.form['hai']
     
 @app.errorhandler(404)
