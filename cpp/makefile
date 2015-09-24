@@ -11,4 +11,4 @@ object/%.o:%.cpp
 
 .PHONY:clean
 clean:
-	rm -f $(OBJ) $(DEV)
+	rm -f $(OBJ) $(DEP)
